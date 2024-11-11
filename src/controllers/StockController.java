@@ -1,16 +1,20 @@
+package controllers;
+
+import models.StockModel;
+import views.StockView;
+import simulation.MonteCarloSimulation;
+
 public class StockController {
     private StockModel model;
     private StockView view;
 
-    public StockController(StockModel model, StockView view)
-    {
+    public StockController(StockModel model, StockView view) {
         this.model = model;
         this.view = view;
     }
 
-    public void start()
-    {
-        String symbol = view.getInputSymbol();
+    public void start() {
+        String symbol = view.getInputSymbol().toUpperCase();
         model.setSymbol(symbol);
 
         if (!model.fetchData()) {

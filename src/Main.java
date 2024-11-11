@@ -1,3 +1,8 @@
+
+import models.StockModel;
+import views.StockView;
+import controllers.StockController;
+
 public class Main {
     public static void main(String[] args) {
         StockModel model = new StockModel();

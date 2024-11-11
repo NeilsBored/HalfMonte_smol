@@ -1,5 +1,9 @@
+package simulation;
+
 import java.util.*;
 import java.util.stream.Collectors;
+
+import views.StockView;
 
 public class MonteCarloSimulation {
     private Map<Calendar, Double> historicalPrices;
@@ -74,7 +78,7 @@ public class MonteCarloSimulation {
         // Duplicate each month's data to account for periodic changes
         for (int month = 0; month < 12; month++) {
             List<Double> returns = monthlyReturns.getOrDefault(month, new ArrayList<>());
-            returns.addAll(returns);
+            returns.addAll(new ArrayList<>(returns));
             monthlyReturns.put(month, returns);
         }
 
