@@ -5,8 +5,8 @@ import views.StockView;
 import simulation.MonteCarloSimulation;
 
 public class StockController {
-    private StockModel model;
-    private StockView view;
+    private final StockModel model;
+    private final StockView view;
 
     public StockController(StockModel model, StockView view) {
         this.model = model;

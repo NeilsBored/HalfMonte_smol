@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 import views.StockView;
 
 public class MonteCarloSimulation {
-    private Map<Calendar, Double> historicalPrices;
-    private StockView view;
+    private final Map<Calendar, Double> historicalPrices;
+    private final StockView view;
     private double calculatedClosePrice;
     private double calculatedHighPrice;
     private double calculatedLowPrice;
@@ -28,9 +28,7 @@ public class MonteCarloSimulation {
         int timeHorizon = 252; // Number of trading days in a year
         List<Double> finalPrices = new ArrayList<>();
 
-        double currentPrice = historicalPrices.values().stream()
-                .sorted(Comparator.reverseOrder())
-                .findFirst()
+        double currentPrice = historicalPrices.values().stream().max(Comparator.naturalOrder())
                 .orElse(100.0);
 
         // Calculate monthly statistics

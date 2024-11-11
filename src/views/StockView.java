@@ -3,7 +3,7 @@ package views;
 import java.util.Scanner;
 
 public class StockView {
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     public String getInputSymbol() {
         System.out.print("Enter the stock symbol: ");

@@ -20,7 +20,7 @@ public class StockModel {
     private double previousClose;
     private double percentChange;
     private long totalVolume;
-    private Map<Calendar, Double> historicalPrices = new HashMap<>();
+    private final Map<Calendar, Double> historicalPrices = new HashMap<>();
 
     private static final String API_KEY = System.getenv("BTQFX8V3210IHD35");
 
@@ -57,7 +57,7 @@ public class StockModel {
 
         JsonNode quoteNode = rootNode.path("Global Quote");
 
-        if (quoteNode.isMissingNode() || quoteNode.size() == 0) {
+        if (quoteNode.isMissingNode() || quoteNode.isEmpty()) {
             System.out.println("Failed to fetch current price data.");
             throw new IOException("Current price data missing");
         }
@@ -91,13 +91,13 @@ public class StockModel {
 
         // Check for API errors
         if (rootNode.has("Error Message") || rootNode.has("Note") || rootNode.has("Information")) {
-            System.out.println("API Error: " + rootNode.toString());
+            System.out.println("API Error: " + rootNode);
             throw new IOException("API returned an error");
         }
 
         JsonNode timeSeriesNode = rootNode.path("Time Series (Daily)");
 
-        if (timeSeriesNode.isMissingNode() || timeSeriesNode.isNull() || timeSeriesNode.size() == 0) {
+        if (timeSeriesNode.isMissingNode() || timeSeriesNode.isNull() || timeSeriesNode.isEmpty()) {
             System.out.println("Failed to fetch historical data.");
             System.out.println("API Response: " + responseBody);
             throw new IOException("Historical data missing");
