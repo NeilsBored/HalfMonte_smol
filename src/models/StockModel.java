@@ -84,7 +84,7 @@ public class StockModel {
         System.out.println("HTTP Status Code: " + response.statusCode());
 
         String responseBody = response.body();
-        //System.out.println("API Response Body: " + responseBody);
+        System.out.println("API Response Body: " + responseBody);
 
         ObjectMapper mapper = new ObjectMapper();
         JsonNode rootNode = mapper.readTree(responseBody);
